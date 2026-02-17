@@ -32,20 +32,12 @@ interface Area {
 
 const areas: Area[] = [
   {
-    id: "ai",
-    title: "AI",
-    icon: <Brain className="w-8 h-8" />,
-    color: "from-purple-500 to-purple-600",
-    bgColor: "bg-purple-50",
-    items: [],
-  },
-  {
     id: "sap-build",
     title: "SAP Build",
     icon: <Blocks className="w-8 h-8" />,
     color: "from-blue-500 to-blue-600",
     bgColor: "bg-blue-50",
-    items: ["Neue Adoption Themen", "Micro App Hub", "Security"],
+    items: ["New Adoption Topics", "Micro App Hub", "Security"],
     itemIcons: [
       <Sparkles className="w-4 h-4" />,
       <AppWindow className="w-4 h-4" />,
@@ -71,11 +63,19 @@ const areas: Area[] = [
     icon: <Handshake className="w-8 h-8" />,
     color: "from-orange-500 to-orange-600",
     bgColor: "bg-orange-50",
-    items: ["ISV Replatformung", "Next Level Program"],
+    items: ["ISV Replatforming", "Next Level Program"],
     itemIcons: [
       <Rocket className="w-4 h-4" />,
       <TrendingUp className="w-4 h-4" />,
     ],
+  },
+  {
+    id: "ai",
+    title: "AI",
+    icon: <Brain className="w-8 h-8" />,
+    color: "from-purple-500 to-purple-600",
+    bgColor: "bg-purple-50",
+    items: [],
   },
 ];
 
@@ -143,7 +143,7 @@ function AreaCard({ area, index }: { area: Area; index: number }) {
         ) : (
           <div className="flex flex-col items-center justify-center py-8 text-gray-400">
             <Target className="w-12 h-12 mb-3 opacity-30" />
-            <p className="text-sm font-medium">Bald verfügbar</p>
+            <p className="text-sm font-medium">Coming Soon</p>
           </div>
         )}
       </div>
@@ -177,7 +177,7 @@ export default function Home() {
               </div>
               <h1 className="text-4xl md:text-5xl font-bold mb-2">ALL IN Program</h1>
               <p className="text-xl opacity-80 max-w-2xl">
-                Transformieren Sie Ihr Geschäft mit KI, Integration und nachhaltigen Partnerschaften
+                Transform your business with AI, Integration, and sustainable Partnerships
               </p>
             </div>
 
@@ -186,8 +186,8 @@ export default function Home() {
                 <div className="flex items-center gap-3">
                   <Users className="w-6 h-6 text-white" />
                   <div className="text-white">
-                    <p className="text-xs opacity-70 uppercase tracking-wider">Gesteuert von</p>
-                    <p className="font-semibold">Projektmanagement Office</p>
+                    <p className="text-xs opacity-70 uppercase tracking-wider">Managed by</p>
+                    <p className="font-semibold">Project Management Office</p>
                   </div>
                 </div>
               </div>
@@ -210,7 +210,7 @@ export default function Home() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
           <p className="text-gray-600 text-lg">
-            Wählen Sie einen Bereich, um mehr zu erfahren
+            Select an area to learn more
           </p>
         </div>
 
@@ -229,18 +229,14 @@ export default function Home() {
                 <Sparkles className="w-8 h-8 text-sap-blue" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-gray-900">Zukunft gestalten</h3>
+                <h3 className="text-xl font-bold text-gray-900">Shape the Future</h3>
                 <p className="text-gray-600">
-                  Innovative Lösungen für die digitale Transformation
+                  Innovative solutions for digital transformation
                 </p>
               </div>
             </div>
 
             <div className="flex gap-4 text-sm text-gray-500">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-purple-500" />
-                <span>AI</span>
-              </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-blue-500" />
                 <span>Build</span>
@@ -253,6 +249,10 @@ export default function Home() {
                 <div className="w-2 h-2 rounded-full bg-orange-500" />
                 <span>Partner</span>
               </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-purple-500" />
+                <span>AI</span>
+              </div>
             </div>
           </div>
         </div>
@@ -263,7 +263,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} SAP SE. Alle Rechte vorbehalten.
+              © {new Date().getFullYear()} SAP SE. All rights reserved.
             </p>
             <p className="text-gray-400 text-sm">
               ALL IN Program
