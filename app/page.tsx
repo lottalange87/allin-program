@@ -18,33 +18,38 @@ import {
   Target,
   BadgeDollarSign,
   User,
+  Briefcase,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// SAP Logo Component
+// SAP Logo Component - Official SVG
 function SAPLogo({ className }: { className?: string }) {
   return (
     <svg
       className={className}
-      viewBox="0 0 100 50"
+      viewBox="0 0 398 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        d="M0 0h50v50H0V0zm2.5 2.5v45h45v-45h-45z"
-        fill="currentColor"
-      />
-      <path
-        d="M5 5h15v15H5V5zm17.5 0h15v15h-15V5zM5 22.5h15v15H5v-15zm17.5 0h15v15h-15v-15z"
-        fill="currentColor"
-      />
+      {/* SAP Square Logo */}
+      <g>
+        {/* Background square */}
+        <rect x="0" y="0" width="90" height="90" fill="white"/>
+        {/* Inner squares pattern */}
+        <rect x="5" y="5" width="35" height="35" fill="currentColor"/>
+        <rect x="50" y="5" width="35" height="35" fill="currentColor"/>
+        <rect x="5" y="50" width="35" height="35" fill="currentColor"/>
+        <rect x="50" y="50" width="35" height="35" fill="currentColor"/>
+      </g>
+      {/* SAP Text */}
       <text
-        x="55"
-        y="35"
+        x="110"
+        y="70"
         fill="currentColor"
-        fontSize="28"
+        fontSize="80"
         fontWeight="bold"
-        fontFamily="Arial, sans-serif"
+        fontFamily="Arial, Helvetica, sans-serif"
+        letterSpacing="2"
       >
         SAP
       </text>
@@ -52,7 +57,7 @@ function SAPLogo({ className }: { className?: string }) {
   );
 }
 
-interface Area {
+interface Workstream {
   id: string;
   title: string;
   lead: string;
@@ -63,7 +68,38 @@ interface Area {
   itemIcons?: React.ReactNode[];
 }
 
-const areas: Area[] = [
+interface ManagementBox {
+  id: string;
+  title: string;
+  lead: string;
+  icon: React.ReactNode;
+  color: string;
+  bgColor: string;
+  description?: string;
+}
+
+const managementBoxes: ManagementBox[] = [
+  {
+    id: "program-mgmt",
+    title: "Program Management",
+    lead: "Rolf",
+    icon: <Briefcase className="w-6 h-6" />,
+    color: "from-gray-700 to-gray-800",
+    bgColor: "bg-gray-50",
+    description: "Overall program coordination and strategy",
+  },
+  {
+    id: "pmo",
+    title: "PMO",
+    lead: "Team",
+    icon: <Users className="w-5 h-5" />,
+    color: "from-gray-500 to-gray-600",
+    bgColor: "bg-gray-50",
+    description: "Project Management Office",
+  },
+];
+
+const workstreams: Workstream[] = [
   {
     id: "sap-build",
     title: "SAP Build",
@@ -117,7 +153,66 @@ const areas: Area[] = [
   },
 ];
 
-function AreaCard({ area, index }: { area: Area; index: number }) {
+function ManagementCard({ box, isSmall = false }: { box: ManagementBox; isSmall?: boolean }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div
+      className={cn(
+        "relative group rounded-xl overflow-hidden transition-all duration-500 ease-out",
+        "border border-gray-200 shadow-md hover:shadow-xl",
+        "bg-white cursor-pointer",
+        "transform hover:-translate-y-1",
+        isHovered && "ring-2 ring-offset-2 ring-gray-400",
+        isSmall ? "p-4" : "p-6"
+      )}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Header with gradient */}
+      <div
+        className={cn(
+          "relative transition-all duration-500 rounded-lg",
+          "bg-gradient-to-br",
+          box.color,
+          isSmall ? "p-3 mb-3" : "p-4 mb-4"
+        )}
+      >
+        <div className="flex items-center justify-between text-white">
+          <div className="flex items-center gap-3">
+            <div className={cn("bg-white/20 rounded-lg backdrop-blur-sm", isSmall ? "p-2" : "p-2.5")}>
+              {box.icon}
+            </div>
+            <h3 className={cn("font-bold", isSmall ? "text-lg" : "text-xl")}>{box.title}</h3>
+          </div>
+        </div>
+        
+        {/* Lead Badge */}
+        <div className="mt-2 flex items-center gap-2 text-white/90">
+          <User className={cn(isSmall ? "w-3 h-3" : "w-4 h-4")} />
+          <span className={cn("font-medium", isSmall ? "text-xs" : "text-sm")}>Lead: {box.lead}</span>
+        </div>
+      </div>
+
+      {/* Description */}
+      {box.description && (
+        <p className="text-gray-600 text-sm">{box.description}</p>
+      )}
+
+      {/* Hover indicator */}
+      <div
+        className={cn(
+          "absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r",
+          box.color,
+          "transform origin-left transition-transform duration-500",
+          isHovered ? "scale-x-100" : "scale-x-0"
+        )}
+      />
+    </div>
+  );
+}
+
+function WorkstreamCard({ area, index }: { area: Workstream; index: number }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -217,25 +312,42 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="text-white">
-              <div className="flex items-center gap-3 mb-4">
-                <SAPLogo className="w-12 h-12 text-white" />
+              {/* SAP Logo */}
+              <div className="mb-6">
+                <svg
+                  viewBox="0 0 398 200"
+                  className="h-16 w-auto"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  {/* SAP Square Logo */}
+                  <g>
+                    {/* Background square */}
+                    <rect x="0" y="0" width="90" height="90" fill="white"/>
+                    {/* Inner squares pattern */}
+                    <rect x="5" y="5" width="35" height="35" fill="#0070F2"/>
+                    <rect x="50" y="5" width="35" height="35" fill="#0070F2"/>
+                    <rect x="5" y="50" width="35" height="35" fill="#0070F2"/>
+                    <rect x="50" y="50" width="35" height="35" fill="#0070F2"/>
+                  </g>
+                  {/* SAP Text */}
+                  <text
+                    x="110"
+                    y="70"
+                    fill="white"
+                    fontSize="80"
+                    fontWeight="bold"
+                    fontFamily="Arial, Helvetica, sans-serif"
+                    letterSpacing="2"
+                  >
+                    SAP
+                  </text>
+                </svg>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold mb-4">ALL IN Program</h1>
               <p className="text-lg opacity-90 max-w-3xl leading-relaxed">
                 Our mission is to drive adoption and consumption of SAP BTP by creating tangible impact at our customers
               </p>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-                <div className="flex items-center gap-3">
-                  <Users className="w-6 h-6 text-white" />
-                  <div className="text-white">
-                    <p className="text-xs opacity-70 uppercase tracking-wider">Managed by</p>
-                    <p className="font-semibold">Project Management Office</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -253,17 +365,32 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center mb-12">
-          <p className="text-gray-600 text-lg">
-            Select an area to learn more
-          </p>
+        {/* Management Boxes Row */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Program Governance</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Program Management - larger */}
+            <div className="md:col-span-2">
+              <ManagementCard box={managementBoxes[0]} />
+            </div>
+            {/* PMO - smaller */}
+            <div className="md:col-span-1">
+              <ManagementCard box={managementBoxes[1]} isSmall />
+            </div>
+          </div>
         </div>
 
-        {/* Areas Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {areas.map((area, index) => (
-            <AreaCard key={area.id} area={area} index={index} />
-          ))}
+        {/* Divider */}
+        <div className="border-t border-gray-200 my-12" />
+
+        {/* Workstreams Section */}
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Workstreams</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {workstreams.map((area, index) => (
+              <WorkstreamCard key={area.id} area={area} index={index} />
+            ))}
+          </div>
         </div>
 
         {/* Info Section */}
