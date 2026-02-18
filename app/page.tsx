@@ -17,6 +17,7 @@ import {
   TrendingUp,
   Rocket,
   Target,
+  BadgeDollarSign,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -37,11 +38,12 @@ const areas: Area[] = [
     icon: <Blocks className="w-8 h-8" />,
     color: "from-blue-500 to-blue-600",
     bgColor: "bg-blue-50",
-    items: ["New Adoption Topics", "Micro App Hub", "Security"],
+    items: ["New Adoption Topics", "Micro App Hub", "Security", "Rise customer investment program"],
     itemIcons: [
       <Sparkles className="w-4 h-4" />,
       <AppWindow className="w-4 h-4" />,
       <Shield className="w-4 h-4" />,
+      <BadgeDollarSign className="w-4 h-4" />,
     ],
   },
   {
