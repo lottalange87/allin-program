@@ -6,7 +6,6 @@ import {
   Blocks,
   Plug,
   Handshake,
-  Building2,
   ChevronRight,
   Sparkles,
   Shield,
@@ -18,12 +17,45 @@ import {
   Rocket,
   Target,
   BadgeDollarSign,
+  User,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+// SAP Logo Component
+function SAPLogo({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 100 50"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0 0h50v50H0V0zm2.5 2.5v45h45v-45h-45z"
+        fill="currentColor"
+      />
+      <path
+        d="M5 5h15v15H5V5zm17.5 0h15v15h-15V5zM5 22.5h15v15H5v-15zm17.5 0h15v15h-15v-15z"
+        fill="currentColor"
+      />
+      <text
+        x="55"
+        y="35"
+        fill="currentColor"
+        fontSize="28"
+        fontWeight="bold"
+        fontFamily="Arial, sans-serif"
+      >
+        SAP
+      </text>
+    </svg>
+  );
+}
 
 interface Area {
   id: string;
   title: string;
+  lead: string;
   icon: React.ReactNode;
   color: string;
   bgColor: string;
@@ -35,8 +67,9 @@ const areas: Area[] = [
   {
     id: "sap-build",
     title: "SAP Build",
+    lead: "Tobias",
     icon: <Blocks className="w-8 h-8" />,
-    color: "from-blue-500 to-blue-600",
+    color: "from-[#0070F2] to-[#005BB5]",
     bgColor: "bg-blue-50",
     items: ["New Adoption Topics", "Micro App Hub", "Security", "Rise customer investment program"],
     itemIcons: [
@@ -49,8 +82,9 @@ const areas: Area[] = [
   {
     id: "integration",
     title: "Integration",
+    lead: "Jörg / Richard",
     icon: <Plug className="w-8 h-8" />,
-    color: "from-teal-500 to-teal-600",
+    color: "from-[#00A8B5] to-[#008A94]",
     bgColor: "bg-teal-50",
     items: ["Integration Moderation", "B2B", "Maya / Agentic AI"],
     itemIcons: [
@@ -62,8 +96,9 @@ const areas: Area[] = [
   {
     id: "partner",
     title: "Partner",
+    lead: "Pavel",
     icon: <Handshake className="w-8 h-8" />,
-    color: "from-orange-500 to-orange-600",
+    color: "from-[#F58C00] to-[#D97A00]",
     bgColor: "bg-orange-50",
     items: ["ISV Replatforming", "Next Level Program"],
     itemIcons: [
@@ -74,8 +109,9 @@ const areas: Area[] = [
   {
     id: "ai",
     title: "AI",
+    lead: "Marko",
     icon: <Brain className="w-8 h-8" />,
-    color: "from-purple-500 to-purple-600",
+    color: "from-[#A100C2] to-[#7A0094]",
     bgColor: "bg-purple-50",
     items: [],
   },
@@ -91,7 +127,7 @@ function AreaCard({ area, index }: { area: Area; index: number }) {
         "border border-gray-200 shadow-lg hover:shadow-2xl",
         "bg-white cursor-pointer",
         "transform hover:-translate-y-1",
-        isHovered && "ring-2 ring-offset-2 ring-sap-blue"
+        isHovered && "ring-2 ring-offset-2 ring-[#0070F2]"
       )}
       style={{
         animationDelay: `${index * 100}ms`,
@@ -107,11 +143,19 @@ function AreaCard({ area, index }: { area: Area; index: number }) {
           area.color
         )}
       >
-        <div className="flex items-center gap-4 text-white">
-          <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
-            {area.icon}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4 text-white">
+            <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
+              {area.icon}
+            </div>
+            <h2 className="text-2xl font-bold">{area.title}</h2>
           </div>
-          <h2 className="text-2xl font-bold">{area.title}</h2>
+        </div>
+        
+        {/* Lead Badge */}
+        <div className="mt-4 flex items-center gap-2 text-white/90">
+          <User className="w-4 h-4" />
+          <span className="text-sm font-medium">Lead: {area.lead}</span>
         </div>
 
         {/* Decorative circles */}
@@ -134,7 +178,7 @@ function AreaCard({ area, index }: { area: Area; index: number }) {
                   "group/item"
                 )}
               >
-                <div className="text-gray-500 group-hover/item:text-sap-blue transition-colors">
+                <div className="text-gray-500 group-hover/item:text-[#0070F2] transition-colors">
                   {area.itemIcons?.[idx]}
                 </div>
                 <span className="text-gray-700 font-medium text-sm">{item}</span>
@@ -174,12 +218,11 @@ export default function Home() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="text-white">
               <div className="flex items-center gap-3 mb-4">
-                <Building2 className="w-10 h-10" />
-                <span className="text-lg font-medium opacity-90">SAP</span>
+                <SAPLogo className="w-12 h-12 text-white" />
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-2">ALL IN Program</h1>
-              <p className="text-xl opacity-80 max-w-2xl">
-                Transform your business with AI, Integration, and sustainable Partnerships
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">ALL IN Program</h1>
+              <p className="text-lg opacity-90 max-w-3xl leading-relaxed">
+                Our mission is to drive adoption and consumption of SAP BTP by creating tangible impact at our customers
               </p>
             </div>
 
@@ -227,8 +270,8 @@ export default function Home() {
         <div className="mt-16 bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-4">
-              <div className="p-4 bg-sap-blue/10 rounded-xl">
-                <Sparkles className="w-8 h-8 text-sap-blue" />
+              <div className="p-4 bg-[#0070F2]/10 rounded-xl">
+                <Sparkles className="w-8 h-8 text-[#0070F2]" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-gray-900">Shape the Future</h3>
@@ -240,19 +283,19 @@ export default function Home() {
 
             <div className="flex gap-4 text-sm text-gray-500">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-blue-500" />
+                <div className="w-2 h-2 rounded-full bg-[#0070F2]" />
                 <span>Build</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-teal-500" />
+                <div className="w-2 h-2 rounded-full bg-[#00A8B5]" />
                 <span>Integration</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-orange-500" />
+                <div className="w-2 h-2 rounded-full bg-[#F58C00]" />
                 <span>Partner</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-purple-500" />
+                <div className="w-2 h-2 rounded-full bg-[#A100C2]" />
                 <span>AI</span>
               </div>
             </div>
