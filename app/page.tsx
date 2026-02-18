@@ -49,8 +49,8 @@ const managementBoxes: ManagementBox[] = [
     title: "Program Management",
     lead: "Rolf",
     icon: <Briefcase className="w-6 h-6" />,
-    color: "from-gray-700 to-gray-800",
-    bgColor: "bg-gray-50",
+    color: "from-[#475E75] to-[#1A2733]",
+    bgColor: "bg-[#EAECEE]/30",
     description: "Overall program coordination and strategy",
   },
   {
@@ -58,8 +58,8 @@ const managementBoxes: ManagementBox[] = [
     title: "PMO",
     lead: "Team",
     icon: <Users className="w-5 h-5" />,
-    color: "from-gray-500 to-gray-600",
-    bgColor: "bg-gray-50",
+    color: "from-[#5B738B] to-[#475E75]",
+    bgColor: "bg-[#EAECEE]/30",
     description: "Project Management Office",
   },
 ];
@@ -70,8 +70,8 @@ const workstreams: Workstream[] = [
     title: "SAP Build",
     lead: "Tobias",
     icon: <Blocks className="w-8 h-8" />,
-    color: "from-[#0070F2] to-[#005BB5]",
-    bgColor: "bg-blue-50",
+    color: "from-[#0070F2] to-[#002A86]",
+    bgColor: "bg-[#D1EFFF]/50",
     items: ["New Adoption Topics", "Micro App Hub", "Security", "Rise customer investment program"],
     itemIcons: [
       <Sparkles className="w-4 h-4" />,
@@ -85,8 +85,8 @@ const workstreams: Workstream[] = [
     title: "Integration",
     lead: "Jörg / Richard",
     icon: <Plug className="w-8 h-8" />,
-    color: "from-[#00A8B5] to-[#008A94]",
-    bgColor: "bg-teal-50",
+    color: "from-[#07838F] to-[#02414C]",
+    bgColor: "bg-[#C2FCEE]/50",
     items: ["Integration Moderation", "B2B", "Maya / Agentic AI"],
     itemIcons: [
       <Network className="w-4 h-4" />,
@@ -99,8 +99,8 @@ const workstreams: Workstream[] = [
     title: "Partner",
     lead: "Pavel",
     icon: <Handshake className="w-8 h-8" />,
-    color: "from-[#F58C00] to-[#D97A00]",
-    bgColor: "bg-orange-50",
+    color: "from-[#C35500] to-[#6D1900]",
+    bgColor: "bg-[#FFF3B8]/50",
     items: ["ISV Replatforming", "Next Level Program"],
     itemIcons: [
       <Rocket className="w-4 h-4" />,
@@ -112,8 +112,8 @@ const workstreams: Workstream[] = [
     title: "AI",
     lead: "Marko",
     icon: <Brain className="w-8 h-8" />,
-    color: "from-[#A100C2] to-[#7A0094]",
-    bgColor: "bg-purple-50",
+    color: "from-[#DF1278] to-[#71014B]",
+    bgColor: "bg-[#FFD5EA]/50",
     items: [],
   },
 ];
@@ -128,7 +128,7 @@ function ManagementCard({ box, isSmall = false }: { box: ManagementBox; isSmall?
         "border border-gray-200 shadow-md hover:shadow-xl",
         "bg-white cursor-pointer",
         "transform hover:-translate-y-1",
-        isHovered && "ring-2 ring-offset-2 ring-gray-400",
+        isHovered && "ring-2 ring-offset-2 ring-[#475E75]",
         isSmall ? "p-4" : "p-6"
       )}
       onMouseEnter={() => setIsHovered(true)}
@@ -271,7 +271,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
       {/* Header */}
-      <header className="relative overflow-hidden bg-gradient-to-br from-[#0070F2] to-[#005BB5]">
+      <header className="relative overflow-hidden bg-gradient-to-br from-[#0070F2] to-[#002A86]">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.03\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20" />
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
@@ -355,15 +355,15 @@ export default function Home() {
                 <span>Build</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-[#00A8B5]" />
+                <div className="w-2 h-2 rounded-full bg-[#07838F]" />
                 <span>Integration</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-[#F58C00]" />
+                <div className="w-2 h-2 rounded-full bg-[#C35500]" />
                 <span>Partner</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-[#A100C2]" />
+                <div className="w-2 h-2 rounded-full bg-[#DF1278]" />
                 <span>AI</span>
               </div>
             </div>
