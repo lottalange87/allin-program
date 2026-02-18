@@ -22,41 +22,6 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// SAP Logo Component - Official SVG
-function SAPLogo({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 398 200"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* SAP Square Logo */}
-      <g>
-        {/* Background square */}
-        <rect x="0" y="0" width="90" height="90" fill="white"/>
-        {/* Inner squares pattern */}
-        <rect x="5" y="5" width="35" height="35" fill="currentColor"/>
-        <rect x="50" y="5" width="35" height="35" fill="currentColor"/>
-        <rect x="5" y="50" width="35" height="35" fill="currentColor"/>
-        <rect x="50" y="50" width="35" height="35" fill="currentColor"/>
-      </g>
-      {/* SAP Text */}
-      <text
-        x="110"
-        y="70"
-        fill="currentColor"
-        fontSize="80"
-        fontWeight="bold"
-        fontFamily="Arial, Helvetica, sans-serif"
-        letterSpacing="2"
-      >
-        SAP
-      </text>
-    </svg>
-  );
-}
-
 interface Workstream {
   id: string;
   title: string;
@@ -314,35 +279,11 @@ export default function Home() {
             <div className="text-white">
               {/* SAP Logo */}
               <div className="mb-6">
-                <svg
-                  viewBox="0 0 398 200"
+                <img 
+                  src="/allin/sap-logo.png" 
+                  alt="SAP" 
                   className="h-16 w-auto"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  {/* SAP Square Logo */}
-                  <g>
-                    {/* Background square */}
-                    <rect x="0" y="0" width="90" height="90" fill="white"/>
-                    {/* Inner squares pattern */}
-                    <rect x="5" y="5" width="35" height="35" fill="#0070F2"/>
-                    <rect x="50" y="5" width="35" height="35" fill="#0070F2"/>
-                    <rect x="5" y="50" width="35" height="35" fill="#0070F2"/>
-                    <rect x="50" y="50" width="35" height="35" fill="#0070F2"/>
-                  </g>
-                  {/* SAP Text */}
-                  <text
-                    x="110"
-                    y="70"
-                    fill="white"
-                    fontSize="80"
-                    fontWeight="bold"
-                    fontFamily="Arial, Helvetica, sans-serif"
-                    letterSpacing="2"
-                  >
-                    SAP
-                  </text>
-                </svg>
+                />
               </div>
               <h1 className="text-4xl md:text-5xl font-bold mb-4">ALL IN Program</h1>
               <p className="text-lg opacity-90 max-w-3xl leading-relaxed">
