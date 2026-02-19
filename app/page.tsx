@@ -87,7 +87,7 @@ const workstreams: Workstream[] = [
     icon: <Plug className="w-8 h-8" />,
     color: "from-[#07838F] to-[#02414C]",
     bgColor: "bg-[#C2FCEE]/50",
-    items: ["Integration Moderation", "B2B", "Maya / Agentic AI"],
+    items: ["Integration Modernization", "B2B", "Maya / Agentic AI"],
     itemIcons: [
       <Network className="w-4 h-4" />,
       <Handshake className="w-4 h-4" />,
