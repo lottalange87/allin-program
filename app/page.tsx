@@ -114,7 +114,8 @@ const workstreams: Workstream[] = [
     icon: <Brain className="w-8 h-8" />,
     color: "from-[#DF1278] to-[#71014B]",
     bgColor: "bg-[#FFD5EA]/50",
-    items: [],
+    items: ["AI Use Cases (Cross)"],
+    itemIcons: [<Sparkles className="w-4 h-4" />],
   },
 ];
 
