@@ -156,7 +156,7 @@ function ManagementCard({ box, isSmall = false }: { box: ManagementBox; isSmall?
         {/* Lead Badge */}
         <div className="mt-2 flex items-center gap-2 text-white/90">
           <User className={cn(isSmall ? "w-3 h-3" : "w-4 h-4")} />
-          <span className={cn("font-medium", isSmall ? "text-xs" : "text-sm")}>Lead: {box.lead}</span>
+          <span className={cn("font-medium", isSmall ? "text-xs" : "text-sm")}>Proposed Lead: {box.lead}</span>
         </div>
       </div>
 
@@ -186,7 +186,7 @@ function WorkstreamCard({ area, index }: { area: Workstream; index: number }) {
       className={cn(
         "relative group rounded-2xl overflow-hidden transition-all duration-500 ease-out",
         "border border-gray-200 shadow-lg hover:shadow-2xl",
-        "bg-white cursor-pointer",
+        "bg-white cursor-pointer flex flex-col",
         "transform hover:-translate-y-1",
         isHovered && "ring-2 ring-offset-2 ring-[#0070F2]"
       )}
@@ -216,7 +216,7 @@ function WorkstreamCard({ area, index }: { area: Workstream; index: number }) {
         {/* Lead Badge */}
         <div className="mt-4 flex items-center gap-2 text-white/90">
           <User className="w-4 h-4" />
-          <span className="text-sm font-medium">Lead: {area.lead}</span>
+          <span className="text-sm font-medium">Proposed Lead: {area.lead}</span>
         </div>
 
         {/* Decorative circles */}
@@ -225,7 +225,7 @@ function WorkstreamCard({ area, index }: { area: Workstream; index: number }) {
       </div>
 
       {/* Content */}
-      <div className={cn("p-6", area.bgColor)}>
+      <div className={cn("p-6 flex-1", area.bgColor)}>
         {area.items.length > 0 ? (
           <ul className="space-y-3">
             {area.items.map((item, idx) => (
