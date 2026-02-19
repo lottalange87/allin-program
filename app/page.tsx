@@ -56,7 +56,7 @@ const managementBoxes: ManagementBox[] = [
   {
     id: "pmo",
     title: "PMO",
-    lead: "Team",
+    lead: "TBD",
     icon: <Users className="w-5 h-5" />,
     color: "from-[#5B738B] to-[#475E75]",
     bgColor: "bg-[#EAECEE]/30",
