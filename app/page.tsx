@@ -72,12 +72,12 @@ const workstreams: Workstream[] = [
     icon: <Blocks className="w-8 h-8" />,
     color: "from-[#0070F2] to-[#002A86]",
     bgColor: "bg-[#D1EFFF]/50",
-    items: ["New Adoption Topics", "SAP Micro-App Hub", "Security", "RISE customer investment program"],
+    items: ["New Adoption Topics", "Security", "RISE customer investment program", "SAP Micro-App Hub"],
     itemIcons: [
       <Sparkles className="w-4 h-4" />,
-      <AppWindow className="w-4 h-4" />,
       <Shield className="w-4 h-4" />,
       <BadgeDollarSign className="w-4 h-4" />,
+      <AppWindow className="w-4 h-4" />,
     ],
   },
   {
